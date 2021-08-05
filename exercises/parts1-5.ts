@@ -1,41 +1,47 @@
-let spacecraftName: string = 'Determination';
-let speedMph: number = 17500;
+// let spacecraftName: string = 'Determination';
+// let speedMph: number = 17500;
 let kilometersToMars: number = 225000000;
 let kilometersToTheMoon: number = 384400;
-let milesPerKilometer: number = 0.621;
+// let milesPerKilometer: number = 0.621;
 
 let milesToMars: number = (kilometersToMars * milesPerKilometer);
 let hoursToMars: number = (milesToMars / speedMph);
 let daysToMars: number = (hoursToMars / 24);
 
-console.log(daysToMars);
-
-
-// Part 2: Print Days to Mars
-
-
-
-// Code an output statement here (use a template literal):
-
-
 
 // Part 3: Create a Function ("getDaysToLocation")
 
+function getDaysToLocation(kilometersAway: number): number {
+      let milesAway: number = kilometersAway * milesPerKilometer;
+      let hoursToLocation: number = milesAway / speedMph;
+      return hoursToLocation / 24;
+    }
 
+// console.log(`${spacecraftName} would take ${getDaysToLocation(kilometersToMars)} days to get to Mars.`);
+// console.log(`${spacecraftName} would take ${getDaysToLocation(kilometersToTheMoon)} days to get to the Moon.`);
 
-// Move your output statement from part 2 here. Update the template literal to call
-// the function and print the outputs for a Mars trip and a moon trip.
+class Spacecraft {
+    milesPerKilometer: number = 0.621;
+    name: string;
+    speedMph: number;
 
+    constructor (name: string, speedMph: number) {
+        this.name = name;
+        this.speedMph = speedMph;
+    }
 
+    getDaysToLocation (kilometersAway: number): number {
+        let milesAway: number = kilometersAway * this.milesPerKilometer;
+        let hoursToLocation: number = milesAway / this.speedMph;
+        return hoursToLocation / 24;
+    }
 
+    printDaysToLocation(location: SpaceLocation) {
+        console.log(`${this.name} would take ${this.getDaysToLocation(location.kilometersAway)} days to get to ${location.name}.`);
+    }
+}
 
-// Part 4: Create a Spacecraft Class
-
-
-
-
-// Create an instance of the class here:
-
+let spaceShuttle = new Spacecraft('Determination', 17500);
 
 
 // Move your output statements from part 3 here. Update the template literals use the
