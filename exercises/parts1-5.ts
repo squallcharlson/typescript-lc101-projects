@@ -4,6 +4,11 @@ let kilometersToMars: number = 225000000;
 let kilometersToTheMoon: number = 384400;
 let milesPerKilometer: number = 0.621;
 
+let milesToMars: number = (kilometersToMars * milesPerKilometer);
+let hoursToMars: number = (milesToMars / speedMph);
+let daysToMars: number = (hoursToMars / 24);
+
+console.log(daysToMars);
 
 
 // Part 2: Print Days to Mars
